@@ -14,39 +14,19 @@ const Emoji = ({symbol, label}) => (
   </span>
 );
 
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
-/*
-function useWindowDimensions() {
-  const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
-
-  useEffect(() => {
-    function handleResize() {
-      setWindowDimensions(getWindowDimensions());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  return windowDimensions;
-}
-*/
+const getWindowWidth = () => window.innerWidth 
+  || document.documentElement.clientWidth 
+  || document.body.clientWidth;
 
 const numClouds = 10;
 function generateClouds() {
-  const xOffset = getWindowDimensions().width / 4;
+  const maxXOffset = window.innerWidth / 4;
 
   let clouds = [];
   for (let i = 0; i < numClouds; i++) {
     clouds.push({
       id: i,
-      xOffset: i % 2 === 0 ? xOffset : -1 * xOffset,
+      xOffset: Math.floor(Math.random() * maxXOffset),
       isReflected: Math.random() < 0.5,
       isVisible: false,
       // TODO: emoji: ,
@@ -60,7 +40,8 @@ function App() {
   const [cloudIndex, setCloudIndex] = useState(0);
   const [clouds, setClouds] = useState(generateClouds());
 
-  const cloudIntervalTime = 2300;
+  // make generated clouds visible at set interval
+  const cloudIntervalTime = 3000;
   useEffect(() => {
     const interval = setInterval(() => {
       let newClouds = [...clouds];
@@ -68,8 +49,38 @@ function App() {
       setClouds(newClouds);
       setCloudIndex(cloudIndex >= numClouds - 1 ? 0 : cloudIndex + 1);
     }, cloudIntervalTime);
+    
     return () => clearInterval(interval);
   }, [cloudIndex, clouds]);
+
+  // resize clouds as window width changes
+  const [windowWidth, setWindowWidth] = useState(getWindowWidth());
+  
+  useEffect(() => {
+    // timeoutId for debounce mechanism
+    let timeoutId = null;
+    function handleResize() {
+      // prevent execution of previous setTimeout
+      clearTimeout(timeoutId);
+      // change width from the state object after 150 milliseconds
+      timeoutId = setTimeout(() => setWindowWidth(getWindowWidth()), 150);
+
+      // re-calculate cloud offsets with new window width
+      let maxXOffset = windowWidth / 4;
+      clouds.map(cloud => {
+        cloud.xOffset = Math.floor(Math.random() * maxXOffset);
+      })
+    };
+
+    // set resize listener
+    window.addEventListener('resize', handleResize);
+
+    // clean up function
+    return () => {
+      // remove resize listener
+      window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   return (
     <div className="App">
