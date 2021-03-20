@@ -3,18 +3,19 @@
 }
 
 .cloud {
-  height: 20em;
+  height: 4em;
+  /* left: 20%; */
   fill: white;
   position: absolute;
 }
-.cloud[running='0'] {
+.cloud[data-running=false] {
   display: none;
 }
-.cloud[running='1'] {
+.cloud[data-running=true] {
   display: block;
   animation: linear forwards;
   animation-name: run;
-  animation-duration: 5s;
+  animation-duration: 8s;
   /* TO ADD */
   /* -webkit-animation: linear infinite;
   -webkit-animation-name: run;
@@ -22,10 +23,14 @@
 }
 @keyframes run {
   0% {
-    bottom: 1%;
+    top: 50%;
   }
+  /* 70% {
+    opacity: 0;
+  } */
   100% {
-    bottom: 100%;
+    opacity: 0;
+    top: 0%;
   }
 }
 /* @-webkit-keyframes run {
@@ -36,12 +41,6 @@
     left: 100%;
   }
 } */
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App {
   background-color: white;
