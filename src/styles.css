@@ -1,5 +1,17 @@
 .App {
-  text-align: center;
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  background-repeat: no-repeat;
+  background-size: 230vw;
+  background-position-x: 85%;
+  background-position-y: -20%;
+}
+.musicPlayer {
+  width: 145vw;
+  position: absolute;
+  bottom: -52%;
+  left: -22%;
 }
 
 .cloud {
@@ -7,10 +19,10 @@
   fill: white;
   position: absolute;
 }
-.cloud[running='0'] {
+.cloud[running="0"] {
   display: none;
 }
-.cloud[running='1'] {
+.cloud[running="1"] {
   display: block;
   animation: linear forwards;
   animation-name: run;
@@ -37,21 +49,57 @@
   }
 } */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media (min-height: 812px) {
+  .App {
+    background-position-x: 85%;
+    background-position-y: 67%;
+  }
+  .musicPlayer {
+    bottom: -42.6%;
+    left: -22%;
   }
 }
 
+@media (min-width: 768px) {
+  .App {
+    background-position-x: 94%;
+    background-position-y: 290%;
+    background-size: 200vw;
+  }
+  .musicPlayer {
+    bottom: -69.5%;
+    left: -22%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .App {
+    background-position-x: 50%;
+    background-position-y: 0%;
+    background-size: 120vw;
+  }
+  .musicPlayer {
+    visibility: hidden;
+  }
+}
+@media (min-width: 1440px) {
+  .App {
+    background-position-x: 50%;
+    background-position-y: 100%;
+    background-size: cover;
+  }
+  .musicPlayer {
+    visibility: hidden;
+  }
+}
 .App-header {
-  background-color: white;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color:#3108F9;
+  color: #3108f9;
 }
 
 @keyframes App-logo-spin {

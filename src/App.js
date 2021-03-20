@@ -2,15 +2,17 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
 import cloud from './images/cloud.svg';
+import website_background from './images/website_background.svg';
+import music_player from './images/music_player.svg';
 
-const Emoji = ({symbol, label}) => (
+const Emoji = ({ symbol, label }) => (
   <span
-      className="emoji"
-      role="img"
-      aria-label={label ? label : ""}
-      aria-hidden={label ? "false" : "true"}
+    className="emoji"
+    role="img"
+    aria-label={label ? label : ""}
+    aria-hidden={label ? "false" : "true"}
   >
-      {symbol}
+    {symbol}
   </span>
 );
 
@@ -25,7 +27,14 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      backgroundImage: `url(${website_background})`,
+    }}>
+      <img
+        src={music_player}
+        className="musicPlayer"
+      />
+
       <header className="App-header">
         <p>
           Number of clouds: {count}
@@ -38,20 +47,21 @@ function App() {
         </button>
 
         <p>
-          You're doing great! <Emoji symbol="😅" label="nervous-laugh"/>
+          You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
         </p>
-        <img 
-          src={cloud} 
+        <img
+          src={cloud}
           className="cloud"
-          alt="cloud" 
+          alt="cloud"
           onAnimationEnd={() => setRunning(0)}
-          running={running} 
+          running={running}
           onClick={() => {
             setCount(count + 1);
             setRunning(0)
-            }
+          }
           }
         />
+
       </header>
     </div>
   );
