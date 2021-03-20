@@ -3,7 +3,7 @@
 }
 
 .cloud {
-  height: 40vmin;
+  height: 20em;
   fill: white;
   position: absolute;
 }
@@ -22,10 +22,10 @@
 }
 @keyframes run {
   0% {
-    left: -70%;
+    bottom: 1%;
   }
   100% {
-    left: 100%;
+    bottom: 100%;
   }
 }
 /* @-webkit-keyframes run {
@@ -43,7 +43,7 @@
   }
 }
 
-.App-header {
+.App {
   background-color: white;
   min-height: 100vh;
   display: flex;
@@ -52,13 +52,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color:#3108F9;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
