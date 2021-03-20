@@ -2,9 +2,13 @@
   text-align: center;
 }
 
+.cloud-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .cloud {
   height: 4em;
-  /* left: 20%; */
   fill: white;
   position: absolute;
 }
@@ -15,7 +19,7 @@
   display: block;
   animation: linear forwards;
   animation-name: run;
-  animation-duration: 8s;
+  animation-duration: 7s;
   /* TO ADD */
   /* -webkit-animation: linear infinite;
   -webkit-animation-name: run;

@@ -21,7 +21,7 @@ function getWindowDimensions() {
     height
   };
 }
-
+/*
 function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
@@ -36,20 +36,17 @@ function useWindowDimensions() {
 
   return windowDimensions;
 }
+*/
 
 const numClouds = 10;
-const minCloudHeight = 600;
-const maxCloudHeight = 900;
 function generateClouds() {
-  const {width, height} = getWindowDimensions();
-  const xOffset = width / 5;
-  let clouds = [];
+  const xOffset = getWindowDimensions().width / 4;
 
+  let clouds = [];
   for (let i = 0; i < numClouds; i++) {
     clouds.push({
       id: i,
-      height: Math.floor(Math.random() * (maxCloudHeight - minCloudHeight + 1)) + minCloudHeight,
-      xOffset: i % 2 == 0 ? xOffset : -1 * xOffset,
+      xOffset: i % 2 === 0 ? xOffset : -1 * xOffset,
       isReflected: Math.random() < 0.5,
       isVisible: false,
       // TODO: emoji: ,
@@ -63,7 +60,7 @@ function App() {
   const [cloudIndex, setCloudIndex] = useState(0);
   const [clouds, setClouds] = useState(generateClouds());
 
-  const cloudIntervalTime = 2000;
+  const cloudIntervalTime = 2300;
   useEffect(() => {
     const interval = setInterval(() => {
       let newClouds = [...clouds];
@@ -72,7 +69,7 @@ function App() {
       setCloudIndex(cloudIndex >= numClouds - 1 ? 0 : cloudIndex + 1);
     }, cloudIntervalTime);
     return () => clearInterval(interval);
-  }, [clouds]);
+  }, [cloudIndex, clouds]);
 
   return (
     <div className="App">
@@ -83,9 +80,10 @@ function App() {
         You're doing great! <Emoji symbol="😅" label="nervous-laugh"/>
       </p>
       
-      <div>
+      <div className="cloud-wrapper">
         {clouds.map(cloud => {
             return <img 
+              key={cloud.id}
               src={cloudImg} 
               className="cloud"
               alt="cloud"
@@ -99,9 +97,8 @@ function App() {
                 }
               }
               style={{
-                // height: cloud.height,
-                // transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") + 
-                //             ` translateX(${cloud.xOffset}px)`
+                transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") + 
+                            ` translateX(${cloud.xOffset}px)`
               }}
             />;
           })}
