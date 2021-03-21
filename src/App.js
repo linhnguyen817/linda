@@ -2,15 +2,17 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
 import cloudImg from './images/cloud.svg';
+import website_background from './images/website_background.svg';
+import music_player from './images/music_player.svg';
 
-const Emoji = ({symbol, label}) => (
+const Emoji = ({ symbol, label }) => (
   <span
-      className="emoji"
-      role="img"
-      aria-label={label ? label : ""}
-      aria-hidden={label ? "false" : "true"}
+    className="emoji"
+    role="img"
+    aria-label={label ? label : ""}
+    aria-hidden={label ? "false" : "true"}
   >
-      {symbol}
+    {symbol}
   </span>
 );
 
@@ -83,7 +85,13 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      backgroundImage: `url(${website_background})`,
+      }}>
+      <img
+        src={music_player}
+        className="musicPlayer"
+      />
       <p>
         Score: {score}
       </p>
