@@ -7,21 +7,27 @@ iframe {
   visibility: hidden;
 }
 
+.playerFrame {
+  visibility: hidden;
+}
 .song-data {
   width: 100px;
   height: 5px;
   position: fixed;
-  animation: songNameMove 10s infinite;
+  animation: songNameMove 20s infinite;
   animation-play-state: running;
   white-space: nowrap;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 18px;
+  color: #3108f9;
 }
 .song-dataContainer {
   width: 250px;
-  position: relative;
-  bottom: 38vh;
-  right: 26.8vw;
-  /* height: 5px; */
-  clip-path: circle(105%);
+  height: 100px;
+  position: fixed;
+  top: 285px;
+  left: 40px;
+  clip-path: polygon(85px 0px, 300px 0px, 300px 50px, 85px 50px);
 }
 
 @keyframes songNameMove {
@@ -29,59 +35,59 @@ iframe {
     left: 0px;
   }
   to {
-    left: 600px;
+    left: 200px;
   }
 }
 
 .prevSong {
   background-color: #3108f9;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   position: fixed;
-  bottom: 52.4vh;
-  left: 13.2vw;
-  width: 2.8vw;
-  height: 3.6vh;
-  /* opacity: 0.6; */
+  top: 398px;
+  left: 133px;
+  width: 27px;
+  height: 20px;
 }
-.prevSong:hover {
-  opacity: 0.3;
-}
-
 .prevSongIcon {
   width: 1.2vw;
-  align-items: center;
+  margin: auto;
+  display: block;
 }
 
 .nextSong {
   background-color: #3108f9;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   position: fixed;
-  bottom: 52.4vh;
-  left: 19.15vw;
-  width: 2.8vw;
-  height: 3.6vh;
+  top: 398px;
+  left: 192px;
+  width: 27px;
+  height: 20px;
 }
-.nextSong:hover {
-  opacity: 0.3;
-}
-
 .nextSongIcon {
   width: 1.2vw;
-  align-items: center;
+  margin: auto;
+  display: block;
   transform: rotateY(180deg);
 }
 
 .play {
   background-color: #3108f9;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   position: fixed;
-  bottom: 52.55vh;
-  left: 16.28vw;
-  width: 2.62vw;
-  height: 3.42vh;
+  top: 398px;
+  left: 162px;
+  width: 27px;
+  height: 20px;
+}
+
+.prevSong:hover {
+  opacity: 0.3;
+}
+.nextSong:hover {
+  opacity: 0.3;
 }
 .play:hover {
   opacity: 0.3;
@@ -89,6 +95,70 @@ iframe {
 
 .playIcon {
   width: 1.2vw;
-  align-items: center;
+  /* margin: auto 20%; */
+  margin: auto;
+  display: block;
   transform: rotateY(180deg);
+}
+
+@media (max-width: 375px) {
+  .playerFrame {
+    height: 80px;
+    width: 359px;
+    border: 1px solid #3108f9;
+    border-radius: 60px;
+    position: fixed;
+    top: 722px;
+    left: 8px;
+    visibility: visible;
+  }
+  .song-data {
+    position: relative;
+    animation-play-state: running;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+  }
+  .song-dataContainer {
+    width: 700px;
+    position: fixed;
+    top: 738px;
+    left: 0%;
+    clip-path: polygon(15px 0px, 360px 0px, 360px 800px, 15px 800px);
+  }
+
+  .prevSong {
+    top: 770px;
+    left: 130px;
+    width: 27px;
+    height: 20px;
+  }
+
+  .prevSongIcon {
+    width: 4vw;
+  }
+
+  .nextSong {
+    position: fixed;
+    top: 770px;
+    left: 212px;
+    width: 27px;
+    height: 20px;
+  }
+
+  .nextSongIcon {
+    width: 4vw;
+  }
+
+  .play {
+    position: fixed;
+    top: 770px;
+    left: 172px;
+    width: 27px;
+    height: 20px;
+  }
+
+  .playIcon {
+    width: 4vw;
+  }
 }

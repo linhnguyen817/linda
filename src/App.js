@@ -1,12 +1,9 @@
 // import {ReactComponent as ReactLogo} from './images/cloud.svg';
 import { useState, useEffect } from 'react';
 import './styles.css';
-<<<<<<< HEAD
-import cloud from './images/cloud.svg';
+
 import YoutubeVideoIframeAPI from './musicPlayer/musicPlayer.js';
-=======
 import cloudImg from './images/cloud.svg';
->>>>>>> 319170cd8dfb22b68b66f199dae1bcf52cc4e061
 import website_background from './images/website_background.svg';
 import music_player from './images/music_player.svg';
 
@@ -21,8 +18,8 @@ const Emoji = ({ symbol, label }) => (
   </span>
 );
 
-const getWindowWidth = () => window.innerWidth 
-  || document.documentElement.clientWidth 
+const getWindowWidth = () => window.innerWidth
+  || document.documentElement.clientWidth
   || document.body.clientWidth;
 
 const numClouds = 10;
@@ -55,13 +52,13 @@ function App() {
       setClouds(newClouds);
       setCloudIndex(cloudIndex >= numClouds - 1 ? 0 : cloudIndex + 1);
     }, cloudIntervalTime);
-    
+
     return () => clearInterval(interval);
   }, [cloudIndex, clouds]);
 
   // resize clouds as window width changes
   const [windowWidth, setWindowWidth] = useState(getWindowWidth());
-  
+
   useEffect(() => {
     // timeoutId for debounce mechanism
     let timeoutId = null;
@@ -91,74 +88,43 @@ function App() {
   return (
     <div className="App" style={{
       backgroundImage: `url(${website_background})`,
-      }}>
-      <img
+    }}>
+      {/* <img
         src={music_player}
         className="musicPlayer"
         alt="musicPlayer"
-      />
-<<<<<<< HEAD
-
-      <header className="App-header">
-        <p>
-          Number of clouds: {count}
-        </p>
-        <button onClick={() => {
-          setCount(0);
-          setRunning(1);
-        }}>
-          Start over
-        </button>
-
-        <p>
-          You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
-        </p>
-        <img
-          src={cloud}
-          className="cloud"
-          alt="cloud"
-          onAnimationEnd={() => setRunning(0)}
-          running={running}
-          onClick={() => {
-            setCount(count + 1);
-            setRunning(0)
-          }
-          }
-        />
-        <YoutubeVideoIframeAPI />
-      </header>
-=======
+      /> */}
       <p>
         Score: {score}
       </p>
       <p>
-        You're doing great! <Emoji symbol="😅" label="nervous-laugh"/>
+        You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
       </p>
-      
+
       <div className="cloud-wrapper">
         {clouds.map(cloud => {
-            return <img 
-              key={cloud.id}
-              src={cloudImg} 
-              className="cloud"
-              alt="cloud"
-              data-running={cloud.isVisible} 
-              onAnimationEnd={() => {
-                cloud.isVisible = false;
-              }}
-              onClick={() => {
-                setScore(score + 1);
-                cloud.isVisible = false;
-                }
-              }
-              style={{
-                transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") + 
-                            ` translateX(${cloud.xOffset}px)`
-              }}
-            />;
-          })}
+          return <img
+            key={cloud.id}
+            src={cloudImg}
+            className="cloud"
+            alt="cloud"
+            data-running={cloud.isVisible}
+            onAnimationEnd={() => {
+              cloud.isVisible = false;
+            }}
+            onClick={() => {
+              setScore(score + 1);
+              cloud.isVisible = false;
+            }
+            }
+            style={{
+              transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") +
+                ` translateX(${cloud.xOffset}px)`
+            }}
+          />;
+        })}
       </div>
->>>>>>> 319170cd8dfb22b68b66f199dae1bcf52cc4e061
+      <YoutubeVideoIframeAPI />
     </div>
   );
 }

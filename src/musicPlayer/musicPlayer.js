@@ -32,6 +32,7 @@ function YoutubeVideoIframeAPI() {
     const onClickNext = () => {
         setVideoPlaylistIndex(videoPlaylistIndex + 1);
         setVideoID(videoPlaylist[videoPlaylistIndex]);
+        // setVideoPlaying(true);
     };
 
     const onClickPrev = () => {
@@ -72,17 +73,21 @@ function YoutubeVideoIframeAPI() {
 
     return (
         <div>
+
             <div id={`youtube-player-${videoID}`} />
-            < button onClick={onClickPrev} className="prevSong"><img src={prevSong_button} className="prevSongIcon" alt="previousSongButton" /></button>
-            <button onClick={onClickPlay} className="play" alt="playButton">
+            <div className="playerFrame"></div>
+
+            <button onClick={() => onClickPrev()} className="prevSong"><img src={prevSong_button} className="prevSongIcon" alt="previousSongButton" /></button>
+            <button onClick={() => onClickPlay()} className="play" alt="playButton">
                 {videoPlaying
                     ? <img src={play_button} className="playIcon" />
                     : <img src={pause_button} className="playIcon" />
                 }
             </button>
-            <button onClick={onClickNext} className="nextSong"><img src={prevSong_button} className="nextSongIcon" alt="nextSongButton" /></button>
+            <button onClick={() => onClickNext()} className="nextSong"><img src={prevSong_button} className="nextSongIcon" alt="nextSongButton" /></button>
             <div className="song-dataContainer"><div className="song-data">{videoTitle}</div></div>
-        </div >
+
+        </div>
     );
 }
 
