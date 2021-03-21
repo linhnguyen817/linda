@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
-
 import YoutubeVideoIframeAPI from './musicPlayer/musicPlayer.js';
 import cloudImg from './images/cloud.svg';
 import website_background from './images/website_background.svg';
-import music_player from './images/music_player.svg';
 import About from './about.js';
 
 const textArr = [
@@ -123,7 +121,6 @@ function App() {
         })}
       </div>
       <p className="cloudText">{textArr[textArrIndex]}</p>
-
       <YoutubeVideoIframeAPI />
     </div>
   );
