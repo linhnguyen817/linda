@@ -34,6 +34,7 @@ function App() {
       <img
         src={music_player}
         className="musicPlayer"
+        alt="musicPlayer"
       />
 
       <header className="App-header">

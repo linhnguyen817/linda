@@ -12,8 +12,6 @@ function YoutubeVideoIframeAPI() {
     const [videoTitle, setVideoTitle] = useState('');
     const [videoPlaylistIndex, setVideoPlaylistIndex] = useState(0);
     const [videoPlaying, setVideoPlaying] = useState(true);
-    const [playButtonImg, setPlayButtonImg] = useState(play_button);
-    // const playButtonImgList = [{ play_button }, { pause_button }];
     const yt = new YoutubeAPI(key);
 
     // runs when youtube player is ready.
@@ -26,10 +24,8 @@ function YoutubeVideoIframeAPI() {
         setVideoPlaying(!videoPlaying);
         if (videoPlaying) {
             window.player.playVideo();
-            // setPlayButtonImg(playButtonImg = play_button)
         } else {
             window.player.pauseVideo();
-            // setPlayButtonImg(playButtonImg = pause_button)
         }
     };
 
@@ -77,9 +73,14 @@ function YoutubeVideoIframeAPI() {
     return (
         <div>
             <div id={`youtube-player-${videoID}`} />
-            < button onClick={onClickPrev} className="prevSong"><img src={prevSong_button} className="prevSongIcon" /></button>
-            <button onClick={onClickPlay} className="play"> <img src={playButtonImg} className="playIcon" /></button>
-            <button onClick={onClickNext} className="nextSong"><img src={prevSong_button} className="nextSongIcon" /></button>
+            < button onClick={onClickPrev} className="prevSong"><img src={prevSong_button} className="prevSongIcon" alt="previousSongButton" /></button>
+            <button onClick={onClickPlay} className="play" alt="playButton">
+                {videoPlaying
+                    ? <img src={play_button} className="playIcon" />
+                    : <img src={pause_button} className="playIcon" />
+                }
+            </button>
+            <button onClick={onClickNext} className="nextSong"><img src={prevSong_button} className="nextSongIcon" alt="nextSongButton" /></button>
             <div className="song-dataContainer"><div className="song-data">{videoTitle}</div></div>
         </div >
     );
