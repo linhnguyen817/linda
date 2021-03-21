@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
+
+import YoutubeVideoIframeAPI from './musicPlayer/musicPlayer.js';
 import cloudImg from './images/cloud.svg';
 import website_background from './images/website_background.svg';
 import music_player from './images/music_player.svg';
 import About from './about.js';
 
 const textArr = [
-  "Work smarter, \nnot harder. Sleep \nwhen you need to 💤", 
+  "Work smarter, \nnot harder. Sleep \nwhen you need to 💤",
   "Work hard, \nplay hard, \nrest hard 😌",
   "It's Monday, \nlet's get \nsome sushi 🍣",
   "The time to relax \nis when you don't \nhave time for it ⏳",
@@ -90,10 +92,7 @@ function App() {
     <div className="App" style={{
       backgroundImage: `url(${website_background})`,
     }}>
-      <img
-        src={music_player}
-        className="musicPlayer"
-      />
+
       <p className="score">
         Clouds Poofed: {score}
       </p>
@@ -123,11 +122,9 @@ function App() {
           />;
         })}
       </div>
-      {/* <div className="textContainer"> */}
-        <p className="cloudText">{textArr[textArrIndex]}</p>
-      {/* </div> */}
+      <p className="cloudText">{textArr[textArrIndex]}</p>
 
-      {/* <div class="textContainer"><span className="cloudText">{textArr[textArrIndex]}</span></div> */}
+      <YoutubeVideoIframeAPI />
     </div>
   );
 }
