@@ -16,8 +16,8 @@ const Emoji = ({ symbol, label }) => (
   </span>
 );
 
-const getWindowWidth = () => window.innerWidth 
-  || document.documentElement.clientWidth 
+const getWindowWidth = () => window.innerWidth
+  || document.documentElement.clientWidth
   || document.body.clientWidth;
 
 const numClouds = 10;
@@ -40,6 +40,8 @@ function App() {
   const [score, setScore] = useState(0);
   const [cloudIndex, setCloudIndex] = useState(0);
   const [clouds, setClouds] = useState(generateClouds());
+  const textArr = ["Work smarter, not harder. Sleep when need to", "Play like how you want it", "It's Monday, let's get some sushi."];
+  const [textArrIndex, setTextArrIndex] = useState(0);
 
   // make generated clouds visible at set interval
   const cloudIntervalTime = 2700;
@@ -50,13 +52,13 @@ function App() {
       setClouds(newClouds);
       setCloudIndex(cloudIndex >= numClouds - 1 ? 0 : cloudIndex + 1);
     }, cloudIntervalTime);
-    
+
     return () => clearInterval(interval);
   }, [cloudIndex, clouds]);
 
   // resize clouds as window width changes
   const [windowWidth, setWindowWidth] = useState(getWindowWidth());
-  
+
   useEffect(() => {
     // timeoutId for debounce mechanism
     let timeoutId = null;
@@ -86,7 +88,7 @@ function App() {
   return (
     <div className="App" style={{
       backgroundImage: `url(${website_background})`,
-      }}>
+    }}>
       <img
         src={music_player}
         className="musicPlayer"
@@ -95,32 +97,38 @@ function App() {
         Score: {score}
       </p>
       <p>
-        You're doing great! <Emoji symbol="😅" label="nervous-laugh"/>
+        You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
       </p>
-      
+
       <div className="cloud-wrapper">
         {clouds.map(cloud => {
-            return <img 
-              key={cloud.id}
-              src={cloudImg} 
-              className="cloud"
-              alt="cloud"
-              data-running={cloud.isVisible} 
-              onAnimationEnd={() => {
-                cloud.isVisible = false;
-              }}
-              onClick={() => {
-                setScore(score + 1);
-                cloud.isVisible = false;
-                }
-              }
-              style={{
-                transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") + 
-                            ` translateX(${cloud.xOffset}px)`
-              }}
-            />;
-          })}
+          return <img
+            key={cloud.id}
+            src={cloudImg}
+            className="cloud"
+            alt="cloud"
+            data-running={cloud.isVisible}
+            onAnimationEnd={() => {
+              cloud.isVisible = false;
+            }}
+            onClick={() => {
+              setScore(score + 1);
+              cloud.isVisible = false;
+              setTextArrIndex(textArrIndex >= textArr.length - 1 ? 0 : textArrIndex + 1);
+            }
+            }
+            style={{
+              transform: (cloud.isReflected ? "scaleX(-1)" : "scaleX(1)") +
+                ` translateX(${cloud.xOffset}px)`
+            }}
+          />;
+        })}
       </div>
+      {/* <div className="textContainer">
+        <p className="cloudText">{textArr[textArrIndex]}</p>
+      </div> */}
+
+      <div class="textContainer"><span className="cloudText">{textArr[textArrIndex]}</span></div>
     </div>
   );
 }

@@ -7,6 +7,21 @@
   background-position-x: 85%;
   background-position-y: -185px;
 }
+.textContainer {
+  width: 200px;
+  background: aqua;
+}
+.cloudText {
+  position: absolute;
+  bottom: 50%;
+  left: 25%;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+  /* color: #3108f9; */
+  font-size: 30px;
+  overflow-wrap: break-all;
+  white-space: pre-wrap;
+}
 .musicPlayer {
   width: 145vw;
   position: absolute;
@@ -24,10 +39,10 @@
   fill: white;
   position: absolute;
 }
-.cloud[data-running=false] {
+.cloud[data-running="false"] {
   display: none;
 }
-.cloud[data-running=true] {
+.cloud[data-running="true"] {
   display: block;
   animation: linear forwards;
   animation-name: run;
@@ -40,7 +55,7 @@
   }
   10% {
     opacity: 100%;
-  } 
+  }
   100% {
     opacity: 0;
     top: 0%;
