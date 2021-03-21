@@ -39,11 +39,12 @@
 }
 @keyframes run {
   0% {
+    opacity: 0;
     top: 50%;
   }
-  /* 70% {
-    opacity: 0;
-  } */
+  10% {
+    opacity: 100%;
+  } 
   100% {
     opacity: 0;
     top: 0%;
@@ -79,6 +80,9 @@
     bottom: -69.5%;
     left: -22%;
   }
+  .cloud {
+    height: 6.5em;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -89,6 +93,10 @@
   }
   .musicPlayer {
     visibility: hidden;
+  }
+  .cloud-wrapper {
+    width: 50%;
+    margin-left: 50%;
   }
 }
 @media (min-width: 1440px) {

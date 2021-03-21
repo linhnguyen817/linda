@@ -22,7 +22,7 @@ const getWindowWidth = () => window.innerWidth
 
 const numClouds = 10;
 function generateClouds() {
-  const maxXOffset = window.innerWidth / 4;
+  const maxXOffset = window.innerWidth <= 768 ? window.innerWidth / 4 : window.innerWidth / 8;
 
   let clouds = [];
   for (let i = 0; i < numClouds; i++) {
@@ -31,7 +31,6 @@ function generateClouds() {
       xOffset: Math.floor(Math.random() * maxXOffset),
       isReflected: Math.random() < 0.5,
       isVisible: false,
-      // TODO: emoji: ,
     });
   }
   return clouds;
@@ -43,7 +42,7 @@ function App() {
   const [clouds, setClouds] = useState(generateClouds());
 
   // make generated clouds visible at set interval
-  const cloudIntervalTime = 3000;
+  const cloudIntervalTime = 2700;
   useEffect(() => {
     const interval = setInterval(() => {
       let newClouds = [...clouds];
@@ -68,7 +67,7 @@ function App() {
       timeoutId = setTimeout(() => setWindowWidth(getWindowWidth()), 150);
 
       // re-calculate cloud offsets with new window width
-      let maxXOffset = windowWidth / 4;
+      const maxXOffset = windowWidth <= 768 ? windowWidth / 3 : windowWidth / 8;
       clouds.map(cloud => {
         cloud.xOffset = Math.floor(Math.random() * maxXOffset);
       })
