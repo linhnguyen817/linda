@@ -5,16 +5,18 @@ import cloudImg from './images/cloud.svg';
 import website_background from './images/website_background.svg';
 import music_player from './images/music_player.svg';
 
-const Emoji = ({ symbol, label }) => (
-  <span
-    className="emoji"
-    role="img"
-    aria-label={label ? label : ""}
-    aria-hidden={label ? "false" : "true"}
-  >
-    {symbol}
-  </span>
-);
+const textArr = [
+  "Work smarter, \nnot harder. Sleep \nwhen you need to 💤", 
+  "Work hard, \nplay hard, \nrest hard 😌",
+  "It's Monday, \nlet's get \nsome sushi 🍣",
+  "The time to relax \nis when you don't \nhave time for it ⏳",
+  "Self-care is \nhow you take \nyour power back 🔌",
+  "Time you enjoy \nwasting is not \nwasted time ⏰",
+  "If your compassion \ndoes not include yourself, \nit is incomplete 👯‍♂️",
+  "Take the time \ntoday to love yourself. \nYou deserve it 😍",
+  "You can’t pour \nfrom an empty cup. Take \ncare of yourself first 🍸",
+  "Be kinder to yourself. \nAnd then let your kindness \nflood the world 💗"
+];
 
 const getWindowWidth = () => window.innerWidth
   || document.documentElement.clientWidth
@@ -40,11 +42,10 @@ function App() {
   const [score, setScore] = useState(0);
   const [cloudIndex, setCloudIndex] = useState(0);
   const [clouds, setClouds] = useState(generateClouds());
-  const textArr = ["Work smarter, not harder. Sleep when need to", "Play like how you want it", "It's Monday, let's get some sushi."];
   const [textArrIndex, setTextArrIndex] = useState(0);
 
   // make generated clouds visible at set interval
-  const cloudIntervalTime = 2700;
+  const cloudIntervalTime = 3500;
   useEffect(() => {
     const interval = setInterval(() => {
       let newClouds = [...clouds];
@@ -93,11 +94,8 @@ function App() {
         src={music_player}
         className="musicPlayer"
       />
-      <p>
-        Score: {score}
-      </p>
-      <p>
-        You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
+      <p className="score">
+        Clouds Poofed: {score}
       </p>
 
       <div className="cloud-wrapper">
@@ -124,11 +122,11 @@ function App() {
           />;
         })}
       </div>
-      {/* <div className="textContainer">
+      {/* <div className="textContainer"> */}
         <p className="cloudText">{textArr[textArrIndex]}</p>
-      </div> */}
+      {/* </div> */}
 
-      <div class="textContainer"><span className="cloudText">{textArr[textArrIndex]}</span></div>
+      {/* <div class="textContainer"><span className="cloudText">{textArr[textArrIndex]}</span></div> */}
     </div>
   );
 }

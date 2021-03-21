@@ -6,21 +6,40 @@
   background-size: 1000px;
   background-position-x: 85%;
   background-position-y: -185px;
+  font-family: "Josefin Sans", sans-serif;
+  color: #3108f9;
 }
 .textContainer {
   width: 200px;
-  background: aqua;
+  word-wrap: break-word;
 }
 .cloudText {
   position: absolute;
-  bottom: 50%;
-  left: 25%;
-  font-family: "Josefin Sans", sans-serif;
+  bottom: 54%;
+  left: 17%;
   font-weight: 300;
-  /* color: #3108f9; */
-  font-size: 30px;
-  overflow-wrap: break-all;
-  white-space: pre-wrap;
+  font-size: 2em;
+  line-height: 1.2;
+  white-space: pre;
+  animation: fade forwards;
+  animation-duration: 3s;
+}
+.score {
+  font-weight: 320;
+  padding: 25px 70px;
+  text-align: right;
+  position: absolute;
+  bottom: 88%;
+  left: 55%;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 .musicPlayer {
   width: 145vw;
@@ -38,6 +57,7 @@
   height: 3.5em;
   fill: white;
   position: absolute;
+  z-index: 2;
 }
 .cloud[data-running="false"] {
   display: none;
@@ -46,7 +66,7 @@
   display: block;
   animation: linear forwards;
   animation-name: run;
-  animation-duration: 7s;
+  animation-duration: 6s;
 }
 @keyframes run {
   0% {
@@ -80,8 +100,15 @@
   .musicPlayer {
     display: none;
   }
+  .cloud-wrapper {
+    width: 50%;
+    margin-left: 50%;
+  }
   .cloud {
     height: 6.5em;
+  }
+  .cloudText {
+    left: 62%;
   }
 }
 
@@ -90,7 +117,7 @@
     background-position: left top;
     background-size: 1000px auto;
   }
-  .cloud-wrapper {
+  .text-wrapper {
     width: 50%;
     margin-left: 50%;
   }
