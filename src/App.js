@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import './styles.css';
 import cloud from './images/cloud.svg';
 import YoutubeVideoIframeAPI from './musicPlayer/musicPlayer.js';
+import website_background from './images/website_background.svg';
+import music_player from './images/music_player.svg';
 
 const Emoji = ({ symbol, label }) => (
   <span
@@ -26,7 +28,14 @@ function App() {
   });
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      backgroundImage: `url(${website_background})`,
+    }}>
+      <img
+        src={music_player}
+        className="musicPlayer"
+      />
+
       <header className="App-header">
         <p>
           Number of clouds: {count}
