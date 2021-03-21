@@ -1,9 +1,9 @@
-// import {ReactComponent as ReactLogo} from './images/cloud.svg';
 import { useState, useEffect } from 'react';
 import './styles.css';
 import cloudImg from './images/cloud.svg';
 import website_background from './images/website_background.svg';
 import music_player from './images/music_player.svg';
+import About from './about.js';
 
 const textArr = [
   "Work smarter, \nnot harder. Sleep \nwhen you need to 💤", 
@@ -97,6 +97,7 @@ function App() {
       <p className="score">
         Clouds Poofed: {score}
       </p>
+      <About pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
 
       <div className="cloud-wrapper">
         {clouds.map(cloud => {
