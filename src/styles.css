@@ -3,9 +3,9 @@
   min-height: 100%;
   position: fixed;
   background-repeat: no-repeat;
-  background-size: 230vw;
+  background-size: 1000px;
   background-position-x: 85%;
-  background-position-y: -20%;
+  background-position-y: -185px;
 }
 .musicPlayer {
   width: 145vw;
@@ -32,10 +32,6 @@
   animation: linear forwards;
   animation-name: run;
   animation-duration: 7s;
-  /* TO ADD */
-  /* -webkit-animation: linear infinite;
-  -webkit-animation-name: run;
-  -webkit-animation-duration: 10s; */
 }
 @keyframes run {
   0% {
@@ -50,19 +46,10 @@
     top: 0%;
   }
 }
-/* @-webkit-keyframes run {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: 100%;
-  }
-} */
 
-@media (min-height: 812px) {
+@media (min-height: 738px) {
   .App {
-    background-position-x: 85%;
-    background-position-y: 67%;
+    background-position-y: 3%;
   }
   .musicPlayer {
     bottom: -42.6%;
@@ -72,13 +59,11 @@
 
 @media (min-width: 768px) {
   .App {
-    background-position-x: 94%;
-    background-position-y: 290%;
-    background-size: 200vw;
+    background-position: top left;
+    background-size: 1000px auto;
   }
   .musicPlayer {
-    bottom: -69.5%;
-    left: -22%;
+    display: none;
   }
   .cloud {
     height: 6.5em;
@@ -87,12 +72,8 @@
 
 @media (min-width: 1024px) {
   .App {
-    background-position-x: 50%;
-    background-position-y: 0%;
-    background-size: 120vw;
-  }
-  .musicPlayer {
-    visibility: hidden;
+    background-position: left top;
+    background-size: 1000px auto;
   }
   .cloud-wrapper {
     width: 50%;
@@ -100,11 +81,6 @@
   }
 }
 @media (min-width: 1440px) {
-  .App {
-    background-position-x: 50%;
-    background-position-y: 100%;
-    background-size: cover;
-  }
   .musicPlayer {
     visibility: hidden;
   }
