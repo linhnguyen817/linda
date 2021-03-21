@@ -2,15 +2,16 @@
 import { useState, useEffect } from 'react';
 import './styles.css';
 import cloud from './images/cloud.svg';
+import YoutubeVideoIframeAPI from './musicPlayer/musicPlayer.js';
 
-const Emoji = ({symbol, label}) => (
+const Emoji = ({ symbol, label }) => (
   <span
-      className="emoji"
-      role="img"
-      aria-label={label ? label : ""}
-      aria-hidden={label ? "false" : "true"}
+    className="emoji"
+    role="img"
+    aria-label={label ? label : ""}
+    aria-hidden={label ? "false" : "true"}
   >
-      {symbol}
+    {symbol}
   </span>
 );
 
@@ -38,20 +39,21 @@ function App() {
         </button>
 
         <p>
-          You're doing great! <Emoji symbol="😅" label="nervous-laugh"/>
+          You're doing great! <Emoji symbol="😅" label="nervous-laugh" />
         </p>
-        <img 
-          src={cloud} 
+        <img
+          src={cloud}
           className="cloud"
-          alt="cloud" 
+          alt="cloud"
           onAnimationEnd={() => setRunning(0)}
-          running={running} 
+          running={running}
           onClick={() => {
             setCount(count + 1);
             setRunning(0)
-            }
+          }
           }
         />
+        <YoutubeVideoIframeAPI />
       </header>
     </div>
   );

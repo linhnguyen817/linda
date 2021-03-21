@@ -1,0 +1,81 @@
+iframe {
+  width: 1px;
+  height: 1px;
+  z-index: -1;
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+}
+
+.song-data {
+  width: 100px;
+  height: 5px;
+  position: relative;
+  animation: songNameMove 10s infinite;
+  animation-play-state: running;
+  white-space: nowrap;
+}
+.song-dataContainer {
+  width: 250px;
+  /* height: 5px; */
+  clip-path: circle(50%);
+}
+
+@keyframes songNameMove {
+  from {
+    left: 0px;
+  }
+  to {
+    left: 250px;
+  }
+}
+
+.prevSong {
+  align-items: center;
+  background-color: #3108f9;
+  border: none;
+  border-radius: 8px;
+}
+.prevSong:hover {
+  opacity: 0.3;
+}
+
+.prevSongIcon {
+  padding: 20px;
+  width: 25px;
+  align-items: center;
+}
+
+.nextSong {
+  align-items: center;
+  background-color: #3108f9;
+  border: none;
+  border-radius: 8px;
+}
+.nextSong:hover {
+  opacity: 0.3;
+}
+
+.nextSongIcon {
+  padding: 20px;
+  width: 25px;
+  align-items: center;
+  transform: rotateY(180deg);
+}
+
+.play {
+  align-items: center;
+  background-color: #3108f9;
+  border: none;
+  border-radius: 8px;
+}
+.play:hover {
+  opacity: 0.3;
+}
+
+.playIcon {
+  padding: 20px;
+  width: 25px;
+  align-items: center;
+  transform: rotateY(180deg);
+}
