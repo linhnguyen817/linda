@@ -3,9 +3,9 @@
   min-height: 100%;
   position: fixed;
   background-repeat: no-repeat;
-  background-size: 230vw;
+  background-size: 1000px;
   background-position-x: 85%;
-  background-position-y: -20%;
+  background-position-y: -185px;
 }
 .musicPlayer {
   width: 145vw;
@@ -14,45 +14,42 @@
   left: -22%;
 }
 
+.cloud-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .cloud {
-  height: 40vmin;
+  height: 3.5em;
   fill: white;
   position: absolute;
 }
-.cloud[running="0"] {
+.cloud[data-running=false] {
   display: none;
 }
-.cloud[running="1"] {
+.cloud[data-running=true] {
   display: block;
   animation: linear forwards;
   animation-name: run;
-  animation-duration: 5s;
-  /* TO ADD */
-  /* -webkit-animation: linear infinite;
-  -webkit-animation-name: run;
-  -webkit-animation-duration: 10s; */
+  animation-duration: 7s;
 }
 @keyframes run {
   0% {
-    left: -70%;
+    opacity: 0;
+    top: 50%;
   }
+  10% {
+    opacity: 100%;
+  } 
   100% {
-    left: 100%;
+    opacity: 0;
+    top: 0%;
   }
 }
-/* @-webkit-keyframes run {
-  0% {
-    left: 0;
-  }
-  100% {
-    left: 100%;
-  }
-} */
 
-@media (min-height: 812px) {
+@media (min-height: 738px) {
   .App {
-    background-position-x: 85%;
-    background-position-y: 67%;
+    background-position-y: 3%;
   }
   .musicPlayer {
     bottom: -42.6%;
@@ -62,32 +59,28 @@
 
 @media (min-width: 768px) {
   .App {
-    background-position-x: 94%;
-    background-position-y: 290%;
-    background-size: 200vw;
+    background-position: top left;
+    background-size: 1000px auto;
   }
   .musicPlayer {
-    bottom: -69.5%;
-    left: -22%;
+    display: none;
+  }
+  .cloud {
+    height: 6.5em;
   }
 }
 
 @media (min-width: 1024px) {
   .App {
-    background-position-x: 50%;
-    background-position-y: 0%;
-    background-size: 120vw;
+    background-position: left top;
+    background-size: 1000px auto;
   }
-  .musicPlayer {
-    visibility: hidden;
+  .cloud-wrapper {
+    width: 50%;
+    margin-left: 50%;
   }
 }
 @media (min-width: 1440px) {
-  .App {
-    background-position-x: 50%;
-    background-position-y: 100%;
-    background-size: cover;
-  }
   .musicPlayer {
     visibility: hidden;
   }
@@ -100,13 +93,4 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: #3108f9;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
