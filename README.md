@@ -5,7 +5,7 @@
 
 It was designed and built by Linda (Linh Nguyen & Dan Liu) during a 36-hour Hackathon at University of Colorado Boulder. Please feel free to test it out and report any bugs or issues. We hope you will enjoy our website :)
 
-Big shutout to Matt Dickey (an experienced and friendly coder) for helping us with the Youtube API and the animation of the clouds. 
+Big shutout to [Matt Dickey](https://github.com/8bit-echo) (an experienced and friendly coder) for helping us with the Youtube API and the animation of the clouds. 
 
 If you would like to see a quick demo of the project, please check out this video on Vimeo: https://vimeo.com/526883420
 
